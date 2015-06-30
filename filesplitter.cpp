@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
         while(!rfile.eof()) {
             string sfn=to_string(fn);
             cout << "Now writing file "+sfn << endl;
-        	wfile.open("frac"+sfn+".csv",ofstream::out);
+        	wfile.open("split"+sfn+".csv",ofstream::out);
     	    while (getline(rfile,line) && lnum<lmax) {
     	    	wfile << line << endl;
     	    	++lnum;
