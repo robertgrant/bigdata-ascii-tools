@@ -5,7 +5,11 @@ This repo was born out of bitter experience. On more than one occasion, I was an
 
 Usually they got written for a specific job and have to be generalised before they can be shared, so they'll pop up here from time to time.
 
+If you want a decent test case, look up Chris Whong's New York 2013 taxi data.
+
 Utilities like this probably exist already in all sorts of forms, but I don't care, they're just sitting around and might be useful for someone.
+
+They all use C++11's to_string, but you could work without that if you wanted to, it's just convenient.
 
 Filesplitter
 ----------------------
@@ -16,4 +20,22 @@ Called like this:
 
 this will crack apart what-a-massive-file.csv (insert your own name, obviously) by rows, so you get a series of smaller files called split1.csv, split2.csv, and so on, each one being 2000 lines long. I'm often dealing with CSV files in this context but you could easily change the name that comes out to whatever suits you.
 
-If you want a decent test case, look up Chris Whong's New York 2013 taxi data.
+Readaline
+---------------------
+
+Called like this:
+
+    ./readaline myasciifile.txt 41318414
+
+this will print the 41,318,414th line of myasciifile.txt on the screen. That's it. As the lengths of lines are unpredictable, it has to start from the beginning and count lines, so the further into the file you are, the longer it will take. However, if you know the lengths are fixed throughout the file, try readaline-fixed (see below), which will be a LOT faster.
+
+Readaline-starting
+---------------------
+
+Called like this:
+
+    ./readaline-starting myasciifile.txt N41318414 N41318415
+
+this will read through myasciifile.txt until it finds a line starting with N41318414, then prints that line and every line that follows until either the end of the file or it finds a line starting with N41318415. This is intended to help if your entries span multiple lines and are indexed uniquely in some way that you can predict (probably consecutive numbers, but that's not essential). Obviously, be careful with the third argument, the end search term, because if it doesn't find it, the entire file from the start line onward will get displayed.
+
+You can also omit the third argument, which will show you just the single line beginning with the start search term (N41318414 in this case)
