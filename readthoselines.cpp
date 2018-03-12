@@ -12,7 +12,6 @@ using std::to_string; // this will require -std=c++11 when compiling
 using std::stoi; // this will require -std=c++11 when compiling
 using std::ifstream;
 using std::ofstream;
-using std::stringstream;
 using std::vector;
 
 // USAGE:
@@ -30,7 +29,6 @@ int main(int argc, char *argv[]) {
     int samplesize = 0; // the size of the vector
     string lineopt = ""; // line number display option, argv[3]
     string linefill; // stuff to display with line number
-	  stringstream sarg; // a stream to bring integers in from the line number file
     string line; // a line being read from some file
     string bigfile;
     ifstream rbfile;
@@ -57,7 +55,6 @@ int main(int argc, char *argv[]) {
             sampleline = stoi(line);
             linenums.push_back(sampleline);
             samplesize++;
-            cout << "samplesize: " << samplesize << ", line: " << sampleline << endl;
             getline(rlfile,line);
         }
     }
