@@ -67,5 +67,6 @@ int main(int argc, char *argv[]) {
             }
 	    }
 	}
+  rfile.close();
   return 0;
 }
