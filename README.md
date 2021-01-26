@@ -16,9 +16,16 @@ Filesplitter
 
 Called like this:
 
-    ./filesplitter what-a-massive-file.csv 2000
+    ./filesplitter what-a-massive-file.data 2000
 
-this will crack apart what-a-massive-file.csv (insert your own name, obviously) by rows, so you get a series of smaller files called split1.csv, split2.csv, and so on, each one being 2000 lines long. I'm often dealing with CSV files in this context but you could easily change the name that comes out to whatever suits you.
+this will crack apart what-a-massive-file.data (insert your own name, obviously) by rows, so you get a series of smaller files called split1, split2, and so on, each one being 2000 lines long. This would work well for files where one row is one entry/observation, and there is a separate dictionary. If the first row is column headers, like in a delimited text file such as CSV, then you want to use csvsplitter instead.
+
+csvsplitter
+----------------------
+
+This is very similar to filesplitter, except that it repeats the first line in every file, and calls them split1.csv, split2.csv and so on. You can use it for any kind of delimiter, it doesn't look for commas.
+
+
 
 Readaline
 ---------------------
@@ -67,7 +74,7 @@ You can also omit the third argument, which will show you just the single line b
 Readaline-fixed
 ---------------------
 
-Yeah, I know. Coming soon.
+Yeah, I know. Maybe one day.
 
 Readthoselines
 ----------------------

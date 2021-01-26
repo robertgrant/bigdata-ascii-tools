@@ -28,9 +28,11 @@ int main(int argc, char *argv[]) {
 	    cerr << "bigfile is missing..." << endl;
 	    return -1;
 	}
-	
+
 	string line;
+	string line1; // first line, to be added atop all splitfiles
 	int fn=1;
+	int gotline1=0;
 	int lnum=1;
 	int lmax=nlines+1;
 	ifstream rfile;
@@ -40,8 +42,15 @@ int main(int argc, char *argv[]) {
         while(!rfile.eof()) {
             string sfn=to_string(fn);
             cout << "Now writing file "+sfn << endl;
-        	wfile.open("split"+sfn,ofstream::out);
+        	wfile.open("split"+sfn+".csv",ofstream::out);
+					if(fn>1) {
+						wfile << line1 << endl;
+					}
     	    while (getline(rfile,line) && lnum<lmax) {
+						if(gotline1==0) {
+							line1=line; // store 1st line for later
+							gotline1=1;
+						}
     	    	wfile << line << endl;
     	    	++lnum;
     	    }
